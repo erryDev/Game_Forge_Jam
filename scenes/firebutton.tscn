@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://lslok4f88ayy"]
+
+[ext_resource type="Script" path="res://scripts/fire.gd" id="1_ptcke"]
+[ext_resource type="Texture2D" uid="uid://yn1humvtbyu8" path="res://assets/Ellipse 95.png" id="2_cg4r4"]
+[ext_resource type="Script" path="res://scripts/firebutton.gd" id="3_hd1a2"]
+
+[node name="firebutton" type="Node2D"]
+script = ExtResource("1_ptcke")
+
+[node name="Ellipse95" type="Sprite2D" parent="."]
+texture = ExtResource("2_cg4r4")
+script = ExtResource("3_hd1a2")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -51.0
+offset_top = -51.0
+offset_right = 52.0
+offset_bottom = 51.0
+
+[connection signal="pressed" from="Button" to="Ellipse95" method="_on_button_pressed"]

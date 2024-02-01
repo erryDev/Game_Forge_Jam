@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://b845wkklboldx"]
+
+[ext_resource type="PackedScene" uid="uid://b0bw0l3eoom11" path="res://scenes/joystick.tscn" id="1_8v36q"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_elctt"]
+[ext_resource type="Texture2D" uid="uid://d3v68m5qt6ks6" path="res://assets/Vector.png" id="3_4kv0v"]
+[ext_resource type="Texture2D" uid="uid://qooqgfcejjfy" path="res://assets/Rectangle 176.png" id="4_fi6xr"]
+[ext_resource type="Script" path="res://scripts/gun.gd" id="5_i41yf"]
+[ext_resource type="PackedScene" uid="uid://lslok4f88ayy" path="res://scenes/firebutton.tscn" id="6_pjygd"]
+[ext_resource type="Texture2D" uid="uid://dnt8q2sccggki" path="res://assets/Group 122.png" id="7_uiwcg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1snt"]
+size = Vector2(152, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_objtj"]
+size = Vector2(1958, 124)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="joystick" parent="Camera2D" instance=ExtResource("1_8v36q")]
+position = Vector2(-395, 109)
+
+[node name="player" type="CharacterBody2D" parent="."]
+script = ExtResource("2_elctt")
+
+[node name="Rectangle175" type="Sprite2D" parent="player"]
+position = Vector2(-11, -21)
+texture = ExtResource("3_4kv0v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(-11, -21)
+shape = SubResource("RectangleShape2D_t1snt")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="gun" type="Sprite2D" parent="player"]
+position = Vector2(35, -2)
+rotation = -1.43641
+texture = ExtResource("4_fi6xr")
+script = ExtResource("5_i41yf")
+
+[node name="Node2D" type="Node2D" parent="player/gun"]
+position = Vector2(-35, -5)
+rotation = -6.28319
+
+[node name="Marker2D" type="Marker2D" parent="player/gun/Node2D"]
+position = Vector2(150, -22)
+
+[node name="firebutton" parent="." instance=ExtResource("6_pjygd")]
+position = Vector2(412, 120)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-32, 254)
+
+[node name="Group122" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("7_uiwcg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_objtj")
